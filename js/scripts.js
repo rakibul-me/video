@@ -25,6 +25,19 @@ const goFullscreenIcon = fullScreenButton.querySelector('.go');
 const exitFullscreenIcon = fullScreenButton.querySelector('.exit');
 const pipButton = document.getElementById('picture-in-picture');
 const sliderTooltip = document.getElementsByClassName('slider-tooltip');
+const videoSource = document.getElementById('video-source');
+
+const url = window.location.href;
+const source = new URL(url).searchParams.get('source');
+const poster = new URL(url).searchParams.get('poster');
+if (source) {
+    videoSource.setAttribute('src', source);
+    video.load();
+}
+if (poster) {
+    video.setAttribute('poster', poster);
+    video.load();
+}
 
 const videoWorks = !!document.createElement('video').canPlayType;
 
